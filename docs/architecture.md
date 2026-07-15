@@ -118,9 +118,6 @@ app/
 features/
 shared/
 providers/
-config/
-constants/
-types/
 tests/
 docs/
 ```
@@ -148,7 +145,6 @@ store/
 
 types/
 
-index.ts
 ```
 
 Every feature remains isolated from the others.
