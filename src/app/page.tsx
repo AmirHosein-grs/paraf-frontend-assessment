@@ -1,3 +1,9 @@
+import { LoginForm } from "@/features/auth/components/LoginForm";
+
 export default function Home() {
-  return <main>Paraf Assessment</main>;
+  return (
+    <main className="p-10">
+      <LoginForm />
+    </main>
+  );
 }
