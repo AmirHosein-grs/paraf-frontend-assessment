@@ -4,90 +4,99 @@
 
 # Enterprise Frontend Assessment
 
-Modern, scalable and maintainable frontend application built with **Next.js**, **TypeScript**, and **Feature-Based Architecture**.
+A modern, scalable and maintainable frontend application built with **Next.js 15**, **React 19**, **TypeScript**, and **Feature-Based Architecture**.
 
-> **Current Development Phase:** Phase 1 — Business Analysis & System Architecture
+> Current Development Phase: **Core Architecture & Feature Data Layer Completed**
 
 </div>
 
 ---
 
-## Overview
+# Overview
 
 This repository contains my solution for the **Paraf Frontend Technical Assessment**.
 
-The goal of this project is not only to implement the requested user interface, but also to design an enterprise-grade frontend architecture that emphasizes:
+The goal of this project is not only to implement the requested UI, but to build an enterprise-grade frontend architecture that follows modern software engineering principles.
 
-- Scalability
-- Maintainability
+The project emphasizes:
+
+- Scalable Architecture
+- Feature Isolation
 - Type Safety
-- Accessibility
+- Clean Code
+- Separation of Concerns
 - Performance
-- Clean Architecture
 - Reusability
+- Maintainability
 - Testability
 
-Instead of focusing only on delivering features, this project follows a structured software engineering process similar to production-grade applications.
+---
+
+# Current Status
+
+## Completed
+
+- Project bootstrap
+- Feature-Based Architecture
+- Shared Layer
+- Environment Configuration
+- Axios API Client
+- Axios Interceptors
+- React Query Configuration
+- Zustand Authentication Store
+- Authentication Flow
+- Protected Routes
+- Middleware Authentication
+- Refresh Token Infrastructure
+- Centralized Error Handling
+- Typed API Layer
+- Dashboard Feature
+- Profile Feature
+- Customer Club Feature
+- Levels Feature
+- Activities Feature
+- Vitrins Feature
+
+## In Progress
+
+- Dashboard UI
+- Design System Components
+- Responsive Layout
+
+## Planned
+
+- Testing
+- Accessibility
+- Performance Optimization
+- Production Hardening
 
 ---
 
-# Project Goals
+# Technology Stack
 
-- Build a scalable frontend architecture.
-- Apply Feature-Based Architecture.
-- Follow modern React and Next.js best practices.
-- Keep business logic isolated from UI.
-- Ensure full TypeScript type safety.
-- Build reusable UI components.
-- Maintain clean Git history.
-- Document architectural decisions throughout development.
+## Framework
 
----
-
-# Current Project Status
-
-This repository is being developed incrementally.
-
-Current progress:
-
-| Phase | Status |
-|--------|--------|
-| Project Analysis | ✅ Completed |
-| Requirements Analysis | ✅ Completed |
-| Feature Identification | ✅ Completed |
-| Data Flow Design | 🔄 In Progress |
-| Project Bootstrap | ⏳ Planned |
-| Authentication | ⏳ Planned |
-| Dashboard | ⏳ Planned |
-| Customer Club | ⏳ Planned |
-| Activities | ⏳ Planned |
-| Testing | ⏳ Planned |
-
-The project intentionally evolves step by step. Every architectural decision is documented before implementation begins.
-
----
-
-# Planned Technology Stack
-
-## Core
-
-- Next.js (App Router)
-- React
+- Next.js 15 (App Router)
+- React 19
 - TypeScript
 - pnpm
 
-## Styling
+---
+
+## UI
 
 - Tailwind CSS v4
 - shadcn/ui
 - Radix UI
-- lucide-react
+- Lucide React
+
+---
 
 ## State Management
 
 ### Server State
 
-- TanStack React Query
+- TanStack Query v5
 
 ### Client State
 
@@ -99,33 +108,20 @@ The project intentionally evolves step by step. Every architectural decision is 
 
 - React Hook Form
 - Zod
-- Hook Form Resolvers
+- @hookform/resolvers
 
 ---
 
 ## Networking
 
-- Axios (Client-side)
-- Fetch API (Server Components)
+- Axios
+- Axios Interceptors
 
 ---
 
-## Testing Strategy
+## Project Architecture
 
-Planned:
-
-- Vitest
-- React Testing Library
-- MSW
-- Playwright
-
-Testing will follow a **Co-located Testing Strategy**, where test files live next to the implementation they validate.
-
----
-
-# Planned Architecture
-
-The application follows **Feature-Based Architecture**.
+The project follows a strict **Feature-Based Architecture**.
 
 ```
 src/
@@ -133,81 +129,172 @@ src/
 app/
 features/
 shared/
-providers/
-lib/
-config/
-constants/
-types/
 tests/
 docs/
 ```
 
-Each feature owns its own:
+Every feature owns its own:
 
-- components
-- hooks
-- services
-- schemas
-- store
-- types
-- tests
+```
+components/
+hooks/
+services/
+types/
+schemas/
+store/
+index.ts
+```
 
-Shared functionality will live under the `shared` directory.
+The `shared` layer contains reusable modules used across features.
 
 ---
 
-# High-Level Architecture
+# Current Project Structure
 
 ```
-                 UI
-
-                 │
-
-                 ▼
-
-        Feature Components
-
-                 │
-
-                 ▼
-
-           Custom Hooks
-
-                 │
-
-                 ▼
-
-          React Query
-
-                 │
-
-                 ▼
-
-             Axios API
-
-                 │
-
-                 ▼
-
-              Backend
+src
+│
+├── app
+├── features
+│   ├── activities
+│   ├── auth
+│   ├── customer-club
+│   ├── dashboard
+│   ├── levels
+│   ├── profile
+│   └── vitrins
+│
+├── shared
+│   ├── api
+│   ├── components
+│   ├── config
+│   ├── constants
+│   ├── hooks
+│   ├── providers
+│   ├── types
+│   └── utils
+│
+├── tests
+└── docs
 ```
 
 ---
 
-# Planned Data Flow
+# Feature Overview
 
-Authentication Flow
+## Authentication
+
+- Login
+- Token Management
+- Protected Routes
+- Middleware
+- Refresh Token Flow
+
+---
+
+## Dashboard
+
+Responsible only for page composition.
+
+Consumes data from:
+
+- Profile
+- Customer Club
+- Activities
+- Levels
+- Vitrins
+
+without owning their business logic.
+
+---
+
+## Profile
+
+Responsible for:
+
+- Current User
+- Personal Information
+
+---
+
+## Customer Club
+
+Responsible for:
+
+- Monthly Score
+- Monthly Coins
+- Task Progress
+
+---
+
+## Levels
+
+Responsible for:
+
+- User Levels
+- Level Progress
+- Current Level
+
+---
+
+## Activities
+
+Responsible for:
+
+- Recent Activities
+- Activity Timeline
+
+---
+
+## Vitrins
+
+Responsible for:
+
+- User Vitrins
+- Vitrin Details
+
+---
+
+# Data Flow
 
 ```
-User
+UI
 
 ↓
 
+Feature Components
+
+↓
+
+Custom Hooks
+
+↓
+
+React Query
+
+↓
+
+API Services
+
+↓
+
+Axios Client
+
+↓
+
+Backend
+```
+
+---
+
+# Authentication Flow
+
+```
 Login Form
 
 ↓
 
-Validation
+Validation (Zod)
 
 ↓
 
@@ -219,160 +306,156 @@ Access Token
 
 ↓
 
-Fetch User
+Zustand Store
 
 ↓
 
-Dashboard
-```
-
-Dashboard Flow
-
-```
-Dashboard
+Local Storage
 
 ↓
 
-User Query
+Protected Routes
 
 ↓
 
-Customer Club Query
-
-↓
-
-Recent Activities Query
-
-↓
-
-Render UI
+Authenticated Pages
 ```
 
 ---
 
-# Features
+# API Layer
 
-The project is divided into independent business domains.
+The networking layer is completely isolated.
 
-- Authentication
-- User
-- Customer Club
-- Levels
-- Activities
-- Vitrins
-- Dashboard
+```
+shared/api
 
-Each feature is isolated and communicates through shared abstractions.
+client.ts
+interceptors.ts
+types.ts
+endpoints.ts
+```
+
+Each feature communicates only with its own API service.
+
+Example:
+
+```
+features/profile/services/profile.api.ts
+features/levels/services/levels.api.ts
+features/auth/services/auth.api.ts
+```
 
 ---
 
-# Documentation
+# State Management
 
-Project documentation is located inside the `docs/` directory.
+## React Query
 
-Current documentation:
+Used for:
 
-```
-docs/
-
-project.md
-
-architecture.md
-
-features.md
-
-data-flow.md
-```
-
-Additional documentation will be added as development progresses.
+- Server Cache
+- API Requests
+- Background Refetching
 
 ---
 
-# Development Workflow
+## Zustand
 
-Development follows an incremental workflow.
+Used only for:
 
-```
-Analyze
+- Authentication State
+- User Session
 
-↓
+Business data never lives inside Zustand.
 
-Design
+---
 
-↓
+# Error Handling
 
-Document
+Implemented:
 
-↓
+- Axios Response Interceptor
+- Centralized Error Handler
+- HTTP Error Normalization
 
-Implement
+---
 
-↓
+# Route Protection
 
-Test
+Implemented using:
 
-↓
+- Next.js Middleware
+- Cookie Authentication
+- Protected Route Layouts
 
-Review
+---
 
-↓
+# Testing Strategy
 
-Refactor
-```
+Planned
 
-Implementation only starts after architectural decisions are documented.
+- Vitest
+- React Testing Library
+- MSW
+- Playwright
 
 ---
 
 # Git Strategy
 
-Every meaningful change is committed separately using Conventional Commits.
+The repository follows **Conventional Commits**.
 
 Examples:
 
 ```
-docs: add project overview
+feat(auth): implement login flow
 
-docs: define feature map
+feat(profile): add profile service
 
-chore: initialize nextjs project
+feat(levels): implement levels feature
 
-build: configure eslint
+refactor(api): centralize axios client
 
-feat(auth): implement login page
-
-fix(auth): handle invalid credentials
-
-refactor(api): extract axios client
+fix(auth): handle unauthorized requests
 ```
 
 ---
 
 # Roadmap
 
-- [x] Business Analysis
-- [x] Requirements Analysis
-- [x] Feature Identification
-- [ ] Data Flow Design
-- [ ] Architecture Documentation
-- [ ] Bootstrap Project
-- [ ] Configure Tooling
-- [ ] Configure Design System
-- [ ] Configure API Layer
-- [ ] Authentication
-- [ ] Dashboard
-- [ ] Customer Club
-- [ ] Activities
-- [ ] Responsive Design
-- [ ] Accessibility
-- [ ] Testing
-- [ ] Performance Optimization
-- [ ] Production Readiness
+- ✅ Project Bootstrap
+- ✅ Feature-Based Architecture
+- ✅ Shared Layer
+- ✅ API Layer
+- ✅ Authentication
+- ✅ Route Protection
+- ✅ Dashboard Data Layer
+- ✅ Customer Club
+- ✅ Levels
+- ✅ Activities
+- ✅ Profile
+- ✅ Vitrins
+- ⏳ Dashboard UI
+- ⏳ Responsive Design
+- ⏳ Accessibility
+- ⏳ Testing
+- ⏳ Performance Optimization
+- ⏳ Production Readiness
 
 ---
 
 # Repository Philosophy
 
-This repository is intended to demonstrate not only implementation skills, but also architectural thinking and software engineering practices.
+The objective of this repository is not merely to implement a dashboard, but to demonstrate professional frontend architecture and engineering practices.
 
-Every decision—from project structure to API design—is documented before implementation to ensure long-term maintainability and scalability.
+The project prioritizes:
+
+- Clean Architecture
+- Domain Separation
+- Strong Type Safety
+- Feature Isolation
+- Reusable Components
+- Long-Term Maintainability
+
+Every feature is developed independently while remaining fully composable within the overall application.
