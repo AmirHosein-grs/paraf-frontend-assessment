@@ -1,7 +1,7 @@
 "use client";
 
 import { useDashboardSummary } from "@/features/dashboard/hooks/useDashboardSummary";
-import { useProfile } from "@/features/dashboard/hooks/useProfile";
+import { useProfile } from "@/features/profile/hooks/useProfile";
 
 export default function DashboardPage() {
   const profileQuery = useProfile();
