@@ -1,6 +1,7 @@
 export const API_ENDPOINTS = {
   AUTH: {
     LOGIN: "/users/login",
+
     ME: "/users/me",
   },
 
@@ -16,7 +17,6 @@ export const API_ENDPOINTS = {
   LEVELS: {
     LIST: "/levels",
   },
-
   VITRINS: {
     LIST: "/users/vitrin/all-user",
     DETAIL: (id: number) => `/users/vitrin/${id}`,

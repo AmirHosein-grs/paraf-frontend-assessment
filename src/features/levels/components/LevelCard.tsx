@@ -16,12 +16,14 @@ export function LevelCard({ level, active = false }: LevelCardProps) {
       }`}
     >
       {level.file && (
-        <Image
-          src={`${env.IMAGE_BASE_URL}/${level.file.link}`}
-          alt={level.name}
-          width={64}
-          height={64}
-        />
+        <div className="relative h-16 w-16">
+          <Image
+            src={`${env.IMAGE_BASE_URL}/${level.file.link}`}
+            alt={level.name}
+            fill
+            sizes="64px"
+          />
+        </div>
       )}
 
       <h3 className="mt-3 font-semibold">{level.name}</h3>

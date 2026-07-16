@@ -2,7 +2,6 @@ import { ApiResponse } from "@/shared/api";
 
 export interface Activity {
   id: number;
-  //  Backend model
 }
 
 export interface ActivityTotal {

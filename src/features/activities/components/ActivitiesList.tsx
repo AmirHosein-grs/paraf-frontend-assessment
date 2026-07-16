@@ -7,11 +7,15 @@ export function ActivitiesList() {
   const { data, isPending, isError } = useActivities();
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return <div className="text-center py-4">Loading...</div>;
   }
 
   if (isError) {
-    return <div>Failed to load activities.</div>;
+    return (
+      <div className="text-red-500 text-center py-4">
+        Failed to load activities.
+      </div>
+    );
   }
 
   if (!data?.result.length) {

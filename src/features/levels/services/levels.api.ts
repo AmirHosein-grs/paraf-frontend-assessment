@@ -1,9 +1,16 @@
 import { apiClient } from "@/shared/api/client";
 
 import type { LevelsResponse } from "../types/level.types";
+import { API_ENDPOINTS, handleApiError } from "@/shared/api";
 
 export async function getLevels() {
-  const { data } = await apiClient.get<LevelsResponse>("/levels");
+  try {
+    const { data } = await apiClient.get<LevelsResponse>(
+      API_ENDPOINTS.LEVELS.LIST,
+    );
 
-  return data.result;
+    return data.result;
+  } catch (error) {
+    return handleApiError(error);
+  }
 }

@@ -1,22 +1,28 @@
-import { apiClient } from "@/shared/api";
-
+// src/features/customer-club/services/customer-club.api.ts
+import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
 import {
   CustomerClubSummaryResponse,
   CustomerClubVitrinSummaryResponse,
-} from "../types/customerClub.types";
+} from "../types/customer-club.types";
 
 export async function getCustomerClubSummary() {
-  const { data } = await apiClient.post<CustomerClubSummaryResponse>(
-    "/customer-club/summary",
-  );
-
-  return data.result;
+  try {
+    const { data } = await apiClient.get<CustomerClubSummaryResponse>(
+      API_ENDPOINTS.CUSTOMER_CLUB.SUMMARY,
+    );
+    return data.result;
+  } catch (error) {
+    return handleApiError(error);
+  }
 }
 
 export async function getCustomerClubVitrinSummary(vitrinId: number) {
-  const { data } = await apiClient.post<CustomerClubVitrinSummaryResponse>(
-    `/customer-club/summary-user-vitrin/${vitrinId}`,
-  );
-
-  return data.result;
+  try {
+    const { data } = await apiClient.get<CustomerClubVitrinSummaryResponse>(
+      API_ENDPOINTS.CUSTOMER_CLUB.SUMMARY_VITRIN(vitrinId),
+    );
+    return data.result;
+  } catch (error) {
+    return handleApiError(error);
+  }
 }

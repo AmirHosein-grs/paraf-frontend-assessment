@@ -1,7 +1,6 @@
-import { Providers } from "./providers";
-
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "@/shared/providers/providers";
 
 export const metadata: Metadata = {
   title: "باشگاه مشتریان پاراف",

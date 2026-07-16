@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      new URL("https://wholesaler-core-develop.web.parafacc.ir/**"),
+    ],
+  },
 };
 
 export default nextConfig;

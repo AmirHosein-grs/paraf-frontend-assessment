@@ -1,8 +1,8 @@
-# POST /customer-club/summary
+# GET /customer-club/summary
 
 ## Endpoint
 
-POST /customer-club/summary
+GET /customer-club/summary
 
 ## Authentication
 
@@ -21,11 +21,11 @@ Bearer Token
 }
 ```
 
-# POST /customer-club/summary-user-vitrin/{id}
+# GET /customer-club/summary-user-vitrin/{id}
 
 ## Endpoint
 
-POST /customer-club/summary-user-vitrin/{id}
+GET /customer-club/summary-user-vitrin/{id}
 
 ## Authentication
 

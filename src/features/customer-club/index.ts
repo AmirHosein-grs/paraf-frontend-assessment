@@ -5,4 +5,4 @@ export * from "./hooks/useCustomerClub";
 
 export * from "./services/customer-club.api";
 
-export * from "./types/customerClub.types";
+export * from "./types/customer-club.types";
