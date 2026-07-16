@@ -1,5 +1,5 @@
 // src/features/customer-club/services/customer-club.api.ts
-import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
+import { apiClient, handleApiError } from "@/shared/api";
 import {
   CustomerClubSummaryResponse,
   CustomerClubVitrinSummaryResponse,
@@ -8,7 +8,7 @@ import {
 export async function getCustomerClubSummary() {
   try {
     const { data } = await apiClient.get<CustomerClubSummaryResponse>(
-      API_ENDPOINTS.CUSTOMER_CLUB.SUMMARY,
+      "/api/customer-club/summary",
     );
     return data.result;
   } catch (error) {
@@ -19,8 +19,9 @@ export async function getCustomerClubSummary() {
 export async function getCustomerClubVitrinSummary(vitrinId: number) {
   try {
     const { data } = await apiClient.get<CustomerClubVitrinSummaryResponse>(
-      API_ENDPOINTS.CUSTOMER_CLUB.SUMMARY_VITRIN(vitrinId),
+      `/api/customer-club/summary-vitrin/${vitrinId}`,
     );
+
     return data.result;
   } catch (error) {
     return handleApiError(error);

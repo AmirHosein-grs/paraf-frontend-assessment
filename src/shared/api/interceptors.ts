@@ -1,22 +1,22 @@
-import { useAuthStore } from "@/features/auth";
-import { apiClient } from "./client";
+// import { useAuthStore } from "@/features/auth";
+// import { apiClient } from "./client";
 
-apiClient.interceptors.request.use(
-  (config) => {
-    const token = useAuthStore.getState().accessToken;
+// apiClient.interceptors.request.use(
+//   (config) => {
+//     const token = useAuthStore.getState().accessToken;
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
 
-    return config;
-  },
-  (error) => Promise.reject(error),
-);
+//     return config;
+//   },
+//   (error) => Promise.reject(error),
+// );
 
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    return Promise.reject(error);
-  },
-);
+// apiClient.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     return Promise.reject(error);
+//   },
+// );

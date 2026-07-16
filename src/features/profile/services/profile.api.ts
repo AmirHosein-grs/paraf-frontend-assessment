@@ -1,12 +1,10 @@
 import type { UserProfileResponse } from "@/shared/types/user.types";
 
-import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
+import { apiClient, handleApiError } from "@/shared/api";
 
 export async function getProfile() {
   try {
-    const { data } = await apiClient.get<UserProfileResponse>(
-      API_ENDPOINTS.AUTH.ME,
-    );
+    const { data } = await apiClient.get<UserProfileResponse>("/api/profile");
 
     return data.result;
   } catch (error) {

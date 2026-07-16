@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
+import { apiClient, handleApiError } from "@/shared/api";
 
 import type {
   UserVitrinsResponse,
@@ -7,9 +7,7 @@ import type {
 
 export async function getUserVitrins() {
   try {
-    const { data } = await apiClient.get<UserVitrinsResponse>(
-      API_ENDPOINTS.VITRINS.LIST,
-    );
+    const { data } = await apiClient.get<UserVitrinsResponse>("/api/vitrins");
 
     return data.result;
   } catch (error) {
@@ -20,7 +18,7 @@ export async function getUserVitrins() {
 export async function getVitrin(id: number) {
   try {
     const { data } = await apiClient.get<VitrinDetailResponse>(
-      API_ENDPOINTS.VITRINS.DETAIL(id),
+      `/api/vitrins/${id}`,
     );
 
     return data.result;
