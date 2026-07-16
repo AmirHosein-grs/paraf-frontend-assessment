@@ -4,14 +4,27 @@ import { useDashboardSummary } from "@/features/dashboard/hooks/useDashboardSumm
 import { useProfile } from "@/features/dashboard/hooks/useProfile";
 
 export default function DashboardPage() {
-  const { data: profile } = useProfile();
-  const { data: summary } = useDashboardSummary();
+  const profileQuery = useProfile();
+  const summaryQuery = useDashboardSummary();
+
+  if (profileQuery.isPending || summaryQuery.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (profileQuery.isError || summaryQuery.isError) {
+    return <div>Something went wrong.</div>;
+  }
 
   return (
     <main className="space-y-6">
-      <h1 className="text-2xl font-bold">سلام {profile?.firstName}</h1>
+      {/* <>
+        <DashboardPage />
+      </> */}
+      <h1 className="text-2xl font-bold">
+        سلام {profileQuery.data?.firstName}
+      </h1>
 
-      <pre>{JSON.stringify(summary, null, 2)}</pre>
+      <pre>{JSON.stringify(profileQuery.data, null, 2)}</pre>
     </main>
   );
 }
