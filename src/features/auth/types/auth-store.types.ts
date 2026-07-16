@@ -1,4 +1,4 @@
-import type { User } from "./user.types";
+import type { User } from "../../../shared/types/user.types";
 
 export interface AuthState {
   accessToken: string | null;

@@ -1,5 +1,6 @@
 import { apiClient } from "@/shared/api";
-import type { UserProfileResponse } from "@/features/auth/types/user.types";
+import type { UserProfileResponse } from "@/shared/types/user.types";
+import { DashboardSummaryResponse } from "../types/dashboard.types";
 
 export const getProfile = async () => {
   const { data } = await apiClient.get<UserProfileResponse>("/users/me");
@@ -8,7 +9,9 @@ export const getProfile = async () => {
 };
 
 export const getDashboardSummary = async () => {
-  const { data } = await apiClient.get("/customer-club/summary");
+  const { data } = await apiClient.get<DashboardSummaryResponse>(
+    "/customer-club/summary",
+  );
 
   return data.result;
 };
