@@ -1,3 +1,4 @@
+import { ApiResponse } from "@/shared/api";
 import { UserRole } from "./role.types";
 
 export interface FileEntity {
@@ -83,7 +84,7 @@ export interface User {
   reasonChangeStatus: string | null;
   iranianAuthStatus: boolean;
   verifiedEmail: boolean;
-  statusStore: "OPEN" | "CLOSE"; // بر اساس مقدار OPEN درون جیسون
+  statusStore: "OPEN" | "CLOSE";
   subscriptionExpiresAt: string;
   defaultRole: UserRole;
   faceValidationStatus: string | null;
@@ -102,7 +103,9 @@ export interface User {
   defaultLang: Language;
   defaultCurrency: Currency;
   roles: UserRole[];
-  userType: "natural" | "legal"; // بر اساس مقدار natural درون جیسون
+  userType: "natural" | "legal";
   status: number;
   trustLevel: string[];
 }
+
+export type UserProfileResponse = ApiResponse<User>;

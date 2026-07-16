@@ -1,11 +1,26 @@
-export const queryKeys = {
-  me: ["me"],
+export const QUERY_KEYS = {
+  auth: {
+    me: ["auth", "me"] as const,
+  },
 
-  levels: ["levels"],
+  dashboard: {
+    summary: ["dashboard", "summary"] as const,
+  },
 
-  vitrins: ["vitrins"],
+  customerClub: {
+    summary: ["customer-club", "summary"] as const,
+  },
 
-  activities: ["activities"],
+  activities: {
+    list: ["activities"] as const,
+  },
 
-  customerClub: ["customer-club"],
-} as const;
+  levels: {
+    list: ["levels"] as const,
+  },
+
+  vitrins: {
+    list: ["vitrins"] as const,
+    detail: (id: number) => ["vitrins", id] as const,
+  },
+};

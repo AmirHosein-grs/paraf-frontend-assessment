@@ -13,6 +13,11 @@ export function useLogin() {
 
     onSuccess: (data) => {
       setTokens(data.result.accessToken, data.result.refreshToken);
+
+      localStorage.setItem("accessToken", data.result.accessToken);
+      localStorage.setItem("refreshToken", data.result.refreshToken);
+
+      document.cookie = `accessToken=${data.result.accessToken}; path=/`;
     },
   });
 }
