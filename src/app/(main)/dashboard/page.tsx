@@ -4,7 +4,6 @@ import { ActivitiesList } from "@/features/activities";
 import { CustomerClubCard, useCustomerClub } from "@/features/customer-club";
 import { LevelProgress } from "@/features/levels/components/LevelProgress";
 import { VitrinList } from "@/features/vitrin";
-
 import { useProfile } from "@/features/profile/hooks/useProfile";
 import { DashboardLoading } from "./_components/DashboardLoading";
 import { DashboardError } from "./_components/DashboardError";

@@ -18,8 +18,11 @@ export function useLogin() {
     onSuccess: (result) => {
       setTokens(result.accessToken, result.refreshToken);
 
-      document.cookie = `accessToken=${result.accessToken}; path=/; max-age=86400; SameSite=Lax; Secure`;
-      document.cookie = `refreshToken=${result.refreshToken}; path=/; max-age=604800; SameSite=Lax; Secure`;
+      const isProd = process.env.NODE_ENV === "production";
+      const secureFlag = isProd ? "Secure;" : "";
+
+      document.cookie = `accessToken=${result.accessToken}; path=/; max-age=86400; SameSite=Lax; ${secureFlag}`;
+      document.cookie = `refreshToken=${result.refreshToken}; path=/; max-age=604800; SameSite=Lax; ${secureFlag}`;
 
       router.push("/dashboard");
     },

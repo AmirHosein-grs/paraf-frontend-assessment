@@ -1,21 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedRoutes = ["/dashboard"];
-
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("accessToken")?.value;
+  const { pathname } = request.nextUrl;
 
-  const isProtected = protectedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route),
-  );
+  const isLoginPath = pathname.startsWith("/login");
 
-  if (isProtected && !token) {
-    return NextResponse.redirect(new URL("/", request.url));
+  if (token) {
+    if (isLoginPath || pathname === "/") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  if (!token) {
+    if (!isLoginPath) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    return NextResponse.next();
+  }
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2)$).*)",
+  ],
 };

@@ -1,5 +1,21 @@
 "use client";
 
+import { Button } from "@/shared/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/shared/components/ui/field";
+import { Input } from "@/shared/components/ui/input";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "../schemas/login.schema";
@@ -25,51 +41,92 @@ export function LoginForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 max-w-md mx-auto p-4"
-    >
-      <div>
-        <label className="block text-sm font-medium mb-1">Phone</label>
-        <input
-          {...register("phone")}
-          type="text"
-          placeholder="Phone number"
-          className="border rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-black"
-        />
-        {errors.phone && (
-          <p className="text-sm text-red-500 mt-1">{errors.phone.message}</p>
-        )}
-      </div>
+    <div className="flex flex-col gap-6" dir="rtl">
+      <Card>
+        <CardHeader>
+          <CardTitle>ورود به حساب کاربری</CardTitle>
+          <CardDescription>
+            برای ورود، شماره موبایل و رمز عبور خود را وارد کنید
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="phone">شماره موبایل</FieldLabel>
+                <Input
+                  dir="ltr"
+                  id="phone"
+                  placeholder="989123456789"
+                  type="tel"
+                  inputMode="numeric"
+                  {...register("phone")}
+                  className={errors.phone ? "border-red-500" : ""}
+                />
+                {errors.phone && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {errors.phone.message}
+                  </p>
+                )}
+              </Field>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">Password</label>
-        <input
-          {...register("password")}
-          type="password"
-          placeholder="Password"
-          className="border rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-black"
-        />
-        {errors.password && (
-          <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>
-        )}
-      </div>
+              <Field>
+                <div className="flex items-center justify-between">
+                  <FieldLabel htmlFor="password">رمز عبور</FieldLabel>
+                  <a
+                    href="#"
+                    className="inline-block text-xs underline-offset-4 hover:underline text-muted-foreground"
+                  >
+                    رمز عبور را فراموش کرده‌اید؟
+                  </a>
+                </div>
+                <Input
+                  dir="ltr"
+                  id="password"
+                  type="password"
+                  {...register("password")}
+                  className={errors.password ? "border-red-500" : ""}
+                />
+                {errors.password && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
+              </Field>
 
-      {loginMutation.error && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-sm text-red-600">
-            {loginMutation.error.message || "An error occurred during login."}
-          </p>
-        </div>
-      )}
+              {loginMutation.error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md mt-2">
+                  <p className="text-sm text-red-600">
+                    {(loginMutation.error.message === "User Not Found" &&
+                      " کاربر پیدا نشد ") ||
+                      "خطایی هنگام ورود رخ داد."}
+                  </p>
+                </div>
+              )}
 
-      <button
-        type="submit"
-        disabled={loginMutation.isPending}
-        className="w-full bg-black text-white rounded-md px-4 py-2 hover:bg-neutral-800 disabled:bg-gray-400 transition-colors"
-      >
-        {loginMutation.isPending ? "Logging in..." : "Login"}
-      </button>
-    </form>
+              <Field className="flex flex-col gap-2 mt-4">
+                <Button
+                  type="submit"
+                  disabled={loginMutation.isPending}
+                  className="w-full"
+                >
+                  {loginMutation.isPending ? "در حال ورود ..." : "ورود"}
+                </Button>
+
+                <FieldDescription className="text-center mt-2">
+                  حساب کاربری ندارید؟{" "}
+                  <a
+                    href="#"
+                    className="font-medium text-primary hover:underline"
+                  >
+                    ثبت نام کنید
+                  </a>
+                </FieldDescription>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
