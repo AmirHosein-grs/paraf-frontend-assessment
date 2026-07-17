@@ -1,30 +1,40 @@
 "use client";
 
 import * as React from "react";
-import { Progress as ProgressPrimitive } from "radix-ui";
-
 import { cn } from "@/shared/utils/cn";
 
-function Progress({
-  className,
-  value,
-  ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  value?: number;
+}
+
+function Progress({ className, value = 0, ...props }: ProgressProps) {
+  const percentage = Math.min(Math.max(value, 0), 100);
+
   return (
-    <ProgressPrimitive.Root
-      data-slot="progress"
+    <div
       className={cn(
-        "relative flex h-2 w-full items-center overflow-x-hidden rounded-2xl bg-muted",
+        "relative h-7 w-full overflow-hidden rounded-full bg-white flex items-center border border-slate-200 shadow-inner",
         className,
       )}
       {...props}
     >
-      <ProgressPrimitive.Indicator
-        data-slot="progress-indicator"
-        className="size-full flex-1 bg-primary transition-all"
-        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+      <div
+        className="bg-[#7C49F2] transition-all duration-500 ease-out h-5 rounded-full"
+        style={{ width: `${Math.max(0, percentage - 2)}%` }}
       />
-    </ProgressPrimitive.Root>
+
+      <div
+        className="absolute top-px flex h-full items-center justify-center transition-all duration-500 ease-out"
+        style={{
+          right: `clamp(16px, ${percentage - 15}%, calc(100% - 16px))`,
+          transform: "translateX(50%)",
+        }}
+      >
+        <span className="p-px rounded-full text-xs font-bold text-white drop-shadow-md">
+          {percentage}
+        </span>
+      </div>
+    </div>
   );
 }
 

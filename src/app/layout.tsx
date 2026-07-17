@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/shared/providers/providers";
-import { vazirmatn } from "@/shared/components/font/fonts";
+import { YekanBakhFaNumRegular } from "@/shared/components/font/fonts";
+import { DirectionProvider } from "@/shared/components/ui/direction";
 
 export const metadata: Metadata = {
   title: "باشگاه مشتریان پاراف",
@@ -17,10 +18,12 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className={`h-full antialiased ${vazirmatn.className}`}
+      className={`h-full antialiased ${YekanBakhFaNumRegular.className}`}
     >
       <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
+        <DirectionProvider dir="rtl">
+          <Providers>{children}</Providers>
+        </DirectionProvider>
       </body>
     </html>
   );

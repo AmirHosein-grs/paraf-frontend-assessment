@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
 
-export const vazirmatn = localFont({
-  src: "../../../../public/fonts/Vazirmatn.woff2",
-  variable: "--font-vazirmatn",
+export const YekanBakhFaNumRegular = localFont({
+  src: "../../../../public/fonts/YekanBakhFaNum-Regular.woff2",
+  variable: "--font-yekan",
   weight: "100 900",
   display: "swap",
 });

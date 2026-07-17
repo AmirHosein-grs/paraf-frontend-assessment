@@ -10,6 +10,7 @@ import { DashboardError } from "./_components/DashboardError";
 import { DashboardHeader } from "./_components/DashboardHeader";
 import { WelcomeSection } from "./_components/WelcomeSection";
 import { DashboardStats } from "./_components/DashboardStats";
+import { DashboardSummaryBar } from "./_components/DashboardSummaryBar";
 
 export default function DashboardPage() {
   const profileQuery = useProfile();
@@ -29,6 +30,7 @@ export default function DashboardPage() {
   return (
     <>
       <DashboardHeader />
+      <DashboardSummaryBar />
 
       <WelcomeSection firstName={firstName} />
 

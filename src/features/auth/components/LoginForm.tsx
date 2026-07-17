@@ -41,7 +41,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col gap-6" dir="rtl">
+    <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
           <CardTitle>ورود به حساب کاربری</CardTitle>

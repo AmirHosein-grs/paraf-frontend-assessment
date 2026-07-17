@@ -123,7 +123,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-vazirmatn), sans-serif;
+    font-family: var(--font-yekan), sans-serif;
   }
   html {
     @apply font-sans;
