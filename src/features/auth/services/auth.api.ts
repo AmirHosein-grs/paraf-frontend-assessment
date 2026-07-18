@@ -1,18 +1,37 @@
-import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
-
-import type { LoginResponse } from "../types/auth.types";
-
+// features/auth/services/auth.api.ts
 import type { LoginRequest } from "../types/login.types";
+import type { User } from "@/shared/types/user.types";
 
-export async function login(payload: LoginRequest) {
-  try {
-    const { data } = await apiClient.post<LoginResponse>(
-      API_ENDPOINTS.AUTH.LOGIN,
+export interface LoginResult {
+  user: User | null;
+}
 
-      payload,
-    );
-    return data.result;
-  } catch (error) {
-    return handleApiError(error);
+async function parseJsonOrThrow(res: Response) {
+  const data = await res.json().catch(() => null);
+  if (!res.ok) {
+    throw {
+      status: res.status,
+      code: data?.code,
+      message: data?.message ?? "Unexpected error",
+    };
   }
+  return data;
+}
+
+export async function login(payload: LoginRequest): Promise<LoginResult> {
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  return parseJsonOrThrow(res);
+}
+
+export async function logout(): Promise<void> {
+  await fetch("/api/auth/logout", { method: "POST" });
+}
+
+export async function fetchSession(): Promise<{ user: User }> {
+  const res = await fetch("/api/auth/me");
+  return parseJsonOrThrow(res);
 }

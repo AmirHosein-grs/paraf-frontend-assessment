@@ -99,7 +99,10 @@ export function LoginForm() {
                   <p className="text-sm text-red-600">
                     {(loginMutation.error.message === "User Not Found" &&
                       " کاربر پیدا نشد ") ||
-                      "خطایی هنگام ورود رخ داد."}
+                      "خطایی هنگام ورود رخ داد"}
+                  </p>
+                  <p className="text-sm text-red-600">
+                    {loginMutation.error.code}
                   </p>
                 </div>
               )}

@@ -4,26 +4,23 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { login } from "../services/auth.api";
 import { useAuthStore } from "../store/auth.store";
-import type { ApiError } from "@/shared/api/error.types";
-import type { LoginTokens } from "../types/auth.types";
+import type { LoginResult } from "../services/auth.api";
 import type { LoginRequest } from "../types/login.types";
 
+interface LoginError {
+  status: number;
+  code?: number;
+  message: string;
+}
+
 export function useLogin() {
-  const setTokens = useAuthStore((state) => state.setTokens);
+  const setUser = useAuthStore((state) => state.setUser);
   const router = useRouter();
 
-  return useMutation<LoginTokens, ApiError, LoginRequest>({
+  return useMutation<LoginResult, LoginError, LoginRequest>({
     mutationFn: login,
-
     onSuccess: (result) => {
-      setTokens(result.accessToken, result.refreshToken);
-
-      const isProd = process.env.NODE_ENV === "production";
-      const secureFlag = isProd ? "Secure;" : "";
-
-      document.cookie = `accessToken=${result.accessToken}; path=/; max-age=86400; SameSite=Lax; ${secureFlag}`;
-      document.cookie = `refreshToken=${result.refreshToken}; path=/; max-age=604800; SameSite=Lax; ${secureFlag}`;
-
+      setUser(result.user);
       router.push("/dashboard");
     },
   });

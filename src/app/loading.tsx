@@ -1,5 +1,11 @@
 "use client";
 
+import { Loader } from "lucide-react";
+
 export default function Loading() {
-  return <div>Loading</div>;
+  return (
+    <div className="w-full pt-52  flex items-center justify-center text-black ">
+      <Loader className="animate-spin w-5 h-5" />
+    </div>
+  );
 }
