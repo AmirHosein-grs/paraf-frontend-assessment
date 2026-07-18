@@ -1,4 +1,5 @@
 import { useUserVitrins } from "../hooks/useVitrins";
+import { UserVitrin } from "../types/vitrin.types";
 import { VitrinCard } from "./VitrinCard";
 
 export function VitrinList() {
@@ -14,7 +15,7 @@ export function VitrinList() {
 
   return (
     <div className="space-y-4">
-      {vitrinsQuery.data.map((vitrin) => (
+      {vitrinsQuery.data.map((vitrin: UserVitrin) => (
         <VitrinCard key={vitrin.id} vitrin={vitrin} />
       ))}
     </div>

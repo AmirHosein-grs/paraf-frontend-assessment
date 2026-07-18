@@ -5,7 +5,7 @@ import { YekanBakhFaNumRegular } from "@/shared/components/font/fonts";
 import { DirectionProvider } from "@/shared/components/ui/direction";
 
 export const metadata: Metadata = {
-  title: "باشگاه مشتریان پاراف",
+  title: "پاراف کلاب",
   description: "...",
 };
 

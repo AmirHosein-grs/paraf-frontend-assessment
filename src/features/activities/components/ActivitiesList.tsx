@@ -2,7 +2,7 @@
 
 import { ActivityCard } from "./ActivityCard";
 import { useActivities } from "../hooks/useActivities";
-
+import { Activity } from "../types/activity.types";
 export function ActivitiesList() {
   const { data, isPending, isError } = useActivities();
 
@@ -28,7 +28,7 @@ export function ActivitiesList() {
 
   return (
     <div className="space-y-4">
-      {data.result.map((activity) => (
+      {data.result.map((activity: Activity) => (
         <ActivityCard key={activity.id}>{activity.id}</ActivityCard>
       ))}
     </div>

@@ -5,12 +5,12 @@ import { CustomerClubCard, useCustomerClub } from "@/features/customer-club";
 import { LevelProgress } from "@/features/levels/components/LevelProgress";
 import { VitrinList } from "@/features/vitrin";
 import { useProfile } from "@/features/profile/hooks/useProfile";
-import { DashboardLoading } from "./_components/DashboardLoading";
-import { DashboardError } from "./_components/DashboardError";
-import { DashboardHeader } from "./_components/DashboardHeader";
-import { WelcomeSection } from "./_components/WelcomeSection";
-import { DashboardStats } from "./_components/DashboardStats";
-import { DashboardSummaryBar } from "./_components/DashboardSummaryBar";
+import { DashboardLoading } from "@/features/dashboard/components/DashboardLoading";
+import { DashboardError } from "@/features/dashboard/components/DashboardError";
+import { DashboardHeader } from "@/features/dashboard/components/DashboardHeader";
+import { DashboardSummaryBar } from "@/features/dashboard/components/DashboardSummaryBar";
+import { WelcomeSection } from "@/features/dashboard/components/WelcomeSection";
+import { DashboardStats } from "@/features/dashboard/components/DashboardStats";
 
 export default function DashboardPage() {
   const profileQuery = useProfile();
