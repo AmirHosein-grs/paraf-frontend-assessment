@@ -1,4 +1,3 @@
-export * from "./components/CustomerClubCard";
 export * from "./components/CustomerClubProgress";
 
 export * from "./hooks/useCustomerClub";

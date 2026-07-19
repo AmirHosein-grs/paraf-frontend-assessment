@@ -8,7 +8,7 @@ interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function Progress({ className, value = 0, ...props }: ProgressProps) {
-  const percentage = Math.min(Math.max(value, 0), 100);
+  const percentage = Math.min(Math.max((value / 300) * 100, 0), 100);
 
   return (
     <div
@@ -31,7 +31,7 @@ function Progress({ className, value = 0, ...props }: ProgressProps) {
         }}
       >
         <span className="p-px rounded-full text-xs font-bold text-white drop-shadow-md">
-          {percentage}
+          {value}
         </span>
       </div>
     </div>
