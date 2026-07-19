@@ -13,12 +13,14 @@ export function ProfileCard({ user }: ProfileCardProps) {
     <div className="rounded-xl border bg-card p-5">
       <div className="flex items-center gap-4 relative h-16 w-16">
         {user.file ? (
-          <Image
-            src={`${env.IMAGE_BASE_URL}/${user.file.link}`}
-            alt={user.firstName}
-            fill
-            sizes="64px"
-          />
+          <>
+            <Image
+              src={`${env.IMAGE_BASE_URL}/${user.file.link}`}
+              alt={user.firstName}
+              fill
+              sizes="64px"
+            />
+          </>
         ) : (
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted text-lg font-semibold">
             {user.firstName[0]}

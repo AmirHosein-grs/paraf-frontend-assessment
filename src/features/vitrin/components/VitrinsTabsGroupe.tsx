@@ -130,13 +130,18 @@ export function VitrinsTabsGroupe() {
                         <div className=" flex items-center justify-center gap-2">
                           <Card className=" py-2 shadow ">
                             <CardContent className="flex items-end justify-end   ">
-                              <Image
-                                src={`${env.IMAGE_BASE_URL}/${vitrin.data?.logo?.link}`}
-                                alt="img"
-                                width={60}
-                                height={60}
-                                className=" p-1 "
-                              />
+                              {vitrin.data?.logo?.link && (
+                                <>
+                                  <Image
+                                    src={`${env.IMAGE_BASE_URL}/${vitrin.data?.logo?.link}`}
+                                    alt="img"
+                                    width={60}
+                                    height={60}
+                                    className=" p-1 "
+                                  />
+                                </>
+                              )}
+
                               <div className=" flex flex-col items-center justify-center text-xs">
                                 <span>
                                   سطح {vitrin.data?.level?.name ?? "-"}
