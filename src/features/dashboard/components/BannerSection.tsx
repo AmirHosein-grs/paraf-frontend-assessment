@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function BannerSection() {
+export function BannerSection() {
   return (
     <div className=" my-10 ">
       <Image

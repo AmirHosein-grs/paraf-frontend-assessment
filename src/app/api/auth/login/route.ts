@@ -1,4 +1,3 @@
-// app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "@/shared/config/env";
 import {
@@ -31,8 +30,6 @@ export async function POST(request: NextRequest) {
 
   const { accessToken, refreshToken } = loginData.result;
 
-  // Fetch the user profile server-side so the client gets a hydrated
-  // session without ever touching the token itself.
   const meRes = await fetch(`${env.BACKEND_API_URL}/users/me`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });

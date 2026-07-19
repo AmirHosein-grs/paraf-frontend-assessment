@@ -1,17 +1,18 @@
 "use client";
 
-import { ActivitiesList } from "@/features/activities";
-import { LevelProgress } from "@/features/levels/components/LevelProgress";
-import { VitrinList } from "@/features/vitrin";
+import { DashboardLoading } from "@/features/dashboard";
+import { DashboardError } from "@/features/dashboard";
+import { DashboardHeader } from "@/features/dashboard";
+import { DashboardSummaryBar } from "@/features/dashboard";
+import { WelcomeSection } from "@/features/dashboard";
+import { BannerSection } from "@/features/dashboard";
 import { useProfile } from "@/features/profile/hooks/useProfile";
-import { DashboardLoading } from "@/features/dashboard/components/DashboardLoading";
-import { DashboardError } from "@/features/dashboard/components/DashboardError";
-import { DashboardHeader } from "@/features/dashboard/components/DashboardHeader";
-import { DashboardSummaryBar } from "@/features/dashboard/components/DashboardSummaryBar";
-import { WelcomeSection } from "@/features/dashboard/components/WelcomeSection";
-// import { DashboardStats } from "@/features/dashboard/components/DashboardStats";
 import { VitrinsTabsGroupe } from "@/features/vitrin/components/VitrinsTabsGroupe";
-import BannerSection from "@/features/dashboard/components/BannerSection";
+import { LevelProgress } from "@/features/levels/components/LevelProgress";
+
+// import { DashboardStats } from "@/features/dashboard";
+// import { ActivitiesList } from "@/features/activities";
+// import { VitrinList } from "@/features/vitrin";
 
 export default function DashboardPage() {
   const profile = useProfile();

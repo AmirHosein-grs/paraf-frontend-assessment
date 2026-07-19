@@ -1,4 +1,3 @@
-// app/api/auth/refresh/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "@/shared/config/env";
 import {
@@ -16,9 +15,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "No session" }, { status: 401 });
   }
 
-  // ⚠️ BACKEND DEPENDENCY: endpoint + payload shape are provisional.
-  // Update this path/body/response-mapping once the backend ships it —
-  // nothing else in the app needs to change.
   const refreshRes = await fetch(`${env.BACKEND_API_URL}/users/refresh`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

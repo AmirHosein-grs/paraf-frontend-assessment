@@ -1,4 +1,3 @@
-// shared/lib/auth-cookies.ts
 import "server-only";
 
 export const ACCESS_TOKEN_COOKIE = "accessToken";
@@ -12,12 +11,6 @@ interface CookieOptions {
   maxAge: number;
 }
 
-/**
- * Decodes a JWT payload WITHOUT verifying the signature.
- * Safe here because this only informs cookie maxAge (a UX/housekeeping
- * concern) — the backend still verifies the signature on every request.
- * Never use this result for authorization decisions.
- */
 export function decodeJwtExp(token: string): number | null {
   try {
     const payloadB64 = token.split(".")[1];
@@ -48,12 +41,10 @@ function baseCookieOptions(maxAge: number): CookieOptions {
 }
 
 export function accessTokenCookieOptions(accessToken: string): CookieOptions {
-  // Fallback: 15 min, in case the token is malformed and exp can't be read.
   return baseCookieOptions(maxAgeFromToken(accessToken, 15 * 60));
 }
 
 export function refreshTokenCookieOptions(refreshToken: string): CookieOptions {
-  // Fallback: 7 days.
   return baseCookieOptions(maxAgeFromToken(refreshToken, 7 * 24 * 60 * 60));
 }
 

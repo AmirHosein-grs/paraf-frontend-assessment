@@ -1,4 +1,3 @@
-// app/api/proxy/[...path]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "@/shared/config/env";
 import { ACCESS_TOKEN_COOKIE } from "@/shared/lib/auth-cookies";

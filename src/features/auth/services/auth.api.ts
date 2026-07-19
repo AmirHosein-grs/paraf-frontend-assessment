@@ -1,4 +1,3 @@
-// features/auth/services/auth.api.ts
 import type { LoginRequest } from "../types/login.types";
 import type { User } from "@/shared/types/user.types";
 

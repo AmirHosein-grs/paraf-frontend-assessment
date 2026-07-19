@@ -1,4 +1,3 @@
-// src/features/customer-club/services/customer-club.api.ts
 import { API_ENDPOINTS, apiClient, handleApiError } from "@/shared/api";
 import {
   CustomerClubSummaryResponse,
