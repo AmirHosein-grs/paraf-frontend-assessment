@@ -5,34 +5,55 @@ import { cn } from "@/shared/utils/cn";
 
 interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number;
+  max?: number;
+
+  indicatorClassName?: string;
+
+  label?: React.ReactNode;
+
+  labelClassName?: string;
+
+  labelContainerClassName?: string;
+
+  labelContainerStyle?: React.CSSProperties;
 }
 
-function Progress({ className, value = 0, ...props }: ProgressProps) {
-  const percentage = Math.min(Math.max((value / 300) * 100, 0), 100);
+function Progress({
+  className,
+  value = 0,
+  max = 300,
+
+  indicatorClassName,
+  labelClassName,
+  labelContainerClassName,
+  labelContainerStyle,
+
+  label,
+
+  ...props
+}: ProgressProps) {
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
   return (
     <div
-      className={cn(
-        "relative h-7 w-full overflow-hidden rounded-full bg-white flex items-center border border-slate-200 shadow-inner",
-        className,
-      )}
+      className={cn("relative h-7 w-full overflow-hidden", className)}
       {...props}
     >
       <div
-        className="bg-[#7C49F2] transition-all duration-500 ease-out h-5 rounded-full"
-        style={{ width: `${Math.max(0, percentage - 2)}%` }}
+        className={cn("transition-all duration-500", indicatorClassName)}
+        style={{
+          width: `${percentage}%`,
+        }}
       />
 
       <div
-        className="absolute top-px flex h-full items-center justify-center transition-all duration-500 ease-out"
-        style={{
-          right: `clamp(16px, ${percentage - 15}%, calc(100% - 16px))`,
-          transform: "translateX(50%)",
-        }}
+        className={cn(
+          "absolute transition-all duration-500",
+          labelContainerClassName,
+        )}
+        style={labelContainerStyle}
       >
-        <span className="p-px rounded-full text-xs font-bold text-white drop-shadow-md">
-          {value}
-        </span>
+        {label ?? <span className={labelClassName}>{value}</span>}
       </div>
     </div>
   );

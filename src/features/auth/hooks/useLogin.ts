@@ -21,7 +21,7 @@ export function useLogin() {
     mutationFn: login,
     onSuccess: (result) => {
       setUser(result.user);
-      router.push("/dashboard");
+      router.push("/club");
     },
   });
 }

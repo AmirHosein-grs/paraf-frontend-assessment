@@ -68,7 +68,7 @@ describe("useLogin", () => {
       expect(setTokens).toHaveBeenCalledWith("access-token", "refresh-token");
     });
 
-    expect(push).toHaveBeenCalledWith("/dashboard");
+    expect(push).toHaveBeenCalledWith("/club");
 
     expect(document.cookie).toContain("accessToken=access-token");
     expect(document.cookie).toContain("refreshToken=refresh-token");

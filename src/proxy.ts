@@ -31,7 +31,7 @@ export function proxy(request: NextRequest) {
   );
 
   if (authenticated && (isPublicOnlyRoute || pathname === "/")) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/club", request.url));
   }
 
   if (!authenticated && !isPublicOnlyRoute && pathname !== "/") {

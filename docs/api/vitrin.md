@@ -236,3 +236,86 @@ Bearer Token
   }
 }
 ```
+
+{
+"success": true,
+"result": {
+"id": 128,
+"userId": 45,
+"role": "user",
+"typeGuild": null,
+"status": "active",
+"unionApprovalStatus": "PENDING",
+"parafApprovalStatus": null,
+"categories": null,
+"groupCategories": null,
+"groupCategoryChildrens": null,
+"businessActivityId": null,
+"cities": null,
+"companyPhones": null,
+"companyName": null,
+"companyAddress": null,
+"companyEmail": null,
+"aboutUs": null,
+"keywords": null,
+"lat": null,
+"long": null,
+"logoId": null,
+"guildId": null,
+"guildName": null,
+"businessLicenseId": null,
+"businessLicenseStatus": null,
+"authenticatedVitrin": false,
+"latestUpdateProducts": null,
+"showData": true,
+"createdAt": "2024-12-01T10:56:04.429Z",
+"updatedAt": null,
+"coverId": null,
+"daysOfWeek": {},
+"startWorkTime": "08:00:00",
+"endWorkTime": "16:00:00",
+"postalCode": null,
+"trademarkId": null,
+"trademarkStatus": null,
+"isGoldenVerified": true,
+"scores": "0",
+"logo": null,
+"businessLicense": null,
+"guild": null,
+"user": {
+"roles": [],
+"userType": "natural",
+"status": 0,
+"trustLevel": [],
+"firstName": "محمد",
+"lastName": "غلامی",
+"phone": "989027927890",
+"cityId": 296,
+"countryId": 3072,
+"scores": "90",
+"file": null,
+"city": {
+"id": 296,
+"name": "بردخون",
+"locationType": "city"
+},
+"country": {
+"id": 3072,
+"name": "ایران",
+"locationType": "country"
+},
+"citiesRow": [
+{
+"id": 296,
+"name": "بردخون",
+"locationType": "city"
+}
+]
+},
+"cover": null,
+"level": null,
+"businessActivity": null,
+"categoriesRow": [],
+"citiesRow": []
+}
+}

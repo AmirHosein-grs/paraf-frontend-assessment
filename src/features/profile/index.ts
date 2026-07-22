@@ -1,5 +1,4 @@
-export * from "./components/ProfileCard";
-export * from "./components/ProfileList";
+export * from "./components/UserProfileWidget";
 
 export * from "./hooks/useProfile";
 
