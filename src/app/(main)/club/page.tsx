@@ -8,6 +8,7 @@ import { ClubLoadingSkeleton } from "@/shared/components/layout/LoadingSkeleton"
 import { ErrorState } from "@/shared/components/layout/ErrorState";
 import { CustomerClubTabs } from "@/app/(main)/club/components/CustomerClubTabs";
 import LevelProgressBar from "@/features/rewards/components/LevelProgressBar";
+import { ClubFeaturesGrid } from "./components/ClubFeaturesGrid";
 
 export default function ClubPage() {
   const { data: profile, isPending, isError } = useProfile();
@@ -33,7 +34,6 @@ export default function ClubPage() {
           6. ردیف سوم: جدول فعالیت‌های اخیر و نمودار آماری
           ======================================================================== */}
       <div className="grid grid-cols-12 gap-4 mt-8">
-        {/* ستون راست (هشت ستون): جدول تاریخچه فعالیت‌ها (تراکنش‌ها، پاداش‌ها، ماموریت‌ها) */}
         <div className="col-span-8">
           {/* 
             <RecentActivitiesTable 
@@ -63,15 +63,8 @@ export default function ClubPage() {
         </div>
       </div>
 
-      {/* ========================================================================
-          7. ردیف آخر: ویژگی‌ها و بنرهای راهنمای پاراف کلاب (ClubFeaturesGrid)
-          ======================================================================== */}
       <div className="mt-12">
-        {/* 
-          <ClubFeaturesGrid />
-          - این بخش کاملاً ایستا (Static) است و نیازی به دریافت دیتا از سرور ندارد 
-            چون شامل معرفی مزایای باشگاه مشتریان (مثل ارسال رایگان، پشتیبانی اختصاصی و...) است.
-        */}
+        <ClubFeaturesGrid />
       </div>
     </div>
   );
